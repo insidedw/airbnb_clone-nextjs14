@@ -16,10 +16,10 @@ import {CreationButtonBar} from "@/app/components/CreationButtonBar";
 import {useState} from "react";
 import {createLocation} from "@/app/actions";
 
-export default function AddressRoute({params}: {params: {id: string}}) {
+export default function AddressRoute({params}: { params: { id: string } }) {
 
     const LazyMap = dynamic(() => import('@/app/components/Map'), {
-        ssr:false,
+        ssr: false,
         loading: () => <Skeleton className={'h=[50vh] w-full'}/>
     })
 

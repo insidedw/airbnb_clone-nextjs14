@@ -10,8 +10,10 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {createReservation} from "@/app/actions";
 import {ReservationSubmitButton} from "@/app/components/SubmitButtons";
+import {unstable_noStore} from "next/cache";
 
 async function getData(homeId: string) {
+    unstable_noStore()
     const data = await prisma.home.findUnique({
         where: {
             id: homeId

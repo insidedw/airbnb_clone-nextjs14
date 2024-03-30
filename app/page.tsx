@@ -5,19 +5,22 @@ import {Suspense} from "react";
 import {SkeletonCard} from "@/app/components/SkeletonCard";
 import {NoItems} from "@/app/components/NoItems";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
+import {unstable_noStore} from "next/cache";
+
 
 interface Favorite {
-    id:string
+    id: string
     createdAt: number
     userId?: string
     homeId?: string
 }
+
 export interface ListingCardProps {
-    id:string
-    photo:string
-    description:string
-    country:string
-    price:number
+    id: string
+    photo: string
+    description: string
+    country: string
+    price: number
     favorite: Favorite[]
 
 }
@@ -29,7 +32,9 @@ export interface SearchParams {
     room?: string
     bathroom?: string
 }
-async function getData({searchParams, userId}: { searchParams?: SearchParams , userId?:string }) {
+
+async function getData({searchParams, userId}: { searchParams?: SearchParams, userId?: string }) {
+    unstable_noStore()
     const data = await prisma.home.findMany({
         where: {
             addedCategory: true,
@@ -75,16 +80,19 @@ async function ShowItems({searchParams}: { searchParams?: SearchParams }) {
 
     const data = await getData({searchParams, userId: user?.id})
 
-    if(data.length === 0) {
+    if (data.length === 0) {
         return (
-            <NoItems title={'Sorry no listing for this category found...'} description={'Please check a other category or create your own listing!'}/>
+            <NoItems title={'Sorry no listing for this category found...'}
+                     description={'Please check a other category or create your own listing!'}/>
         )
     }
 
     return (<div className={'grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8'}>
         {data.map(item => {
             return <ListingCard key={item.id} id={item.id} photo={item.photo!} description={item.description!}
-                                country={item.country!} price={item.price!} userId={user?.id} favoriteId={item.Favorite[0]?.id} isInFavoriteList={item.Favorite.length > 0} homeId={item.id} pathName={'/'}/>
+                                country={item.country!} price={item.price!} userId={user?.id}
+                                favoriteId={item.Favorite[0]?.id} isInFavoriteList={item.Favorite.length > 0}
+                                homeId={item.id} pathName={'/'}/>
         })}
     </div>)
 }
