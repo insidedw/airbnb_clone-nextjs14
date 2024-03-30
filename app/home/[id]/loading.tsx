@@ -1,18 +1,19 @@
-import {SkeletonCard} from "@/app/components/SkeletonCard";
+import {Skeleton} from "@/components/ui/skeleton";
 
-export default function FavoritesLoading() {
+export default function HomeIdLoading() {
     return (
-        <section className={'container mx-auto px-5 lg:px-10 mt-10'}>
-            <h2 className={'text-3xl font-semibold tracking-tight'}>Your Favorites</h2>
-            <div className={'grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8 mt-8'}>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
-                <SkeletonCard/>
+        <section className={'w-[75%] mx-auto mt-10'}>
+            <Skeleton className={'h-4 w-1/3'}/>
+            <Skeleton className={'w-full h-[550px] mt-5'}/>
+
+            <div className={'mt-8 flex justify-between gap-x-24'}>
+                <div className={'w-2/3'}>
+                    <Skeleton className={'h-4 w-1/3'}/>
+                    <Skeleton className={'h-4 w-1/3 mt-3'}/>
+                </div>
+                <div className={'w-1/3'}>
+                    <Skeleton className={'w-full h-72'}/>
+                </div>
             </div>
         </section>
     )
