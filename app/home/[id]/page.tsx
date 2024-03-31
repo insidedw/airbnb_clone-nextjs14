@@ -47,7 +47,7 @@ async function getData(homeId: string) {
 export default async function HomeIdRoute({ params }: { params: { id: string } }) {
   const data = await getData(params.id)
   const { getCountryByValue } = useCountries()
-  const country = getCountryByValue(data?.country!)
+  const country = getCountryByValue(data?.country as string)
   const { getUser } = getKindeServerSession()
   const user = await getUser()
 
@@ -86,11 +86,11 @@ export default async function HomeIdRoute({ params }: { params: { id: string } }
             </div>
           </div>
           <Separator className={'my-7'} />
-          <CategoryShowcase categoryName={data?.categoryName!} />
+          <CategoryShowcase categoryName={data?.categoryName as string} />
           <Separator className={'my-7'} />
           <p className={'text-muted-foreground'}>{data?.description}</p>
           <Separator className={'my-7'} />
-          <HomeMap locationValue={country?.value!} />
+          <HomeMap locationValue={country?.value as string} />
         </div>
         <form action={createReservation}>
           <input type={'hidden'} name={'homeId'} value={params.id} />

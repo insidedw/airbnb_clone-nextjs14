@@ -35,7 +35,7 @@ export function SelectCalendar({ reservation }: Props) {
         showDateDisplay={false}
         rangeColors={['#FF5A5F']}
         ranges={state}
-        onChange={(item) => setState([item.selection] as any)}
+        onChange={(item) => setState([item.selection] as never)}
         minDate={new Date()}
         direction={'vertical'}
         disabledDates={disabledDate}

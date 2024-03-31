@@ -48,17 +48,17 @@ export default async function FavoritesRoute() {
         <div className={'grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1 gap-8 mt-8'}>
           {data.map((item) => (
             <ListingCard
-              key={item.Home?.id!}
-              id={item.Home?.id!}
-              photo={item.Home?.photo!}
-              description={item.Home?.description!}
-              country={item.Home?.country!}
-              price={item.Home?.price!}
+              key={item.Home?.id as string}
+              id={item.Home?.id as string}
+              photo={item.Home?.photo as string}
+              description={item.Home?.description as string}
+              country={item.Home?.country as string}
+              price={item.Home?.price as number}
               isInFavoriteList={(item.Home?.Favorite.length as number) > 0}
               favoriteId={item.Home?.Favorite[0].id as string}
               pathName={'/favorites'}
               userId={user.id}
-              homeId={item.Home?.id!}
+              homeId={item.Home?.id as string}
             />
           ))}
         </div>
