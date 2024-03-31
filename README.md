@@ -2,6 +2,10 @@
 
 This project is a clone of the Airbnb website built using Next.js 14, with assistance from the tutorial series "Create an Airbnb Clone with Next.js 14, Kinde, Supabase, Prisma and Tailwind" available on YouTube.
 
+## Demo
+https://airbnb-clone-nextjs14.vercel.app/
+
+
 ## Tutorial Source
 
 The tutorial series "Create an Airbnb Clone with Next.js 14, Kinde, Supabase, Prisma and Tailwind" provides step-by-step guidance on building this project. You can find the tutorial on YouTube by searching for the mentioned title.

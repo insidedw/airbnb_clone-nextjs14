@@ -1,8 +1,5 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react'
 
-export default function LayoutCreation({children}: {children: ReactNode}) {
-
-    return (
-        <div className={'mt-10'}>{children}</div>
-    )
+export default function LayoutCreation({ children }: { children: ReactNode }) {
+  return <div className={'mt-10'}>{children}</div>
 }
